@@ -1,8 +1,14 @@
 language: node_js
 node_js:
-  - "18"
+  - "16"  # Using Node.js 16 instead of 18
+
 cache: npm
+
 install:
   - npm install
+
 script:
-  - npm run test:unit
+  - npm run test:unit -- --coverage
+
+notifications:
+  email: false
