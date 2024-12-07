@@ -10,11 +10,21 @@ install:
 script:
   - npm run test:unit -- --coverage
     # Pull Vercel Environment Information
-  - vercel pull --yes --environment=production --token=${cMb35i1YUJFyc9rmxFXlvP9a}
+  - vercel pull --yes --environment=production --token=cMb35i1YUJFyc9rmxFXlvP9a
   # Build Project Artifacts
-  - vercel build --prod --token=${cMb35i1YUJFyc9rmxFXlvP9a}
+  - vercel build --prod --token=cMb35i1YUJFyc9rmxFXlvP9a
 
 notifications:
   email: false
 
+env:
+  global:
+    - VERCEL_ORG_ID=KIZMzsVNVEXi69nrR8rra4j4
+    - VERCEL_PROJECT_ID=prj_ejCXCygWgR5x2opY79kNPLTIN9BD
 
+deploy:
+  provider: script
+  script: vercel deploy --prebuilt --prod --token=cMb35i1YUJFyc9rmxFXlvP9a
+  skip_cleanup: true
+  on:
+    branch: main
