@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "16"  # Using Node.js 16 instead of 18
+  - "16" # Using Node.js 16 instead of 18
 
 cache: npm
 
@@ -9,6 +9,12 @@ install:
 
 script:
   - npm run test:unit -- --coverage
+    # Pull Vercel Environment Information
+  - vercel pull --yes --environment=production --token=${cMb35i1YUJFyc9rmxFXlvP9a}
+  # Build Project Artifacts
+  - vercel build --prod --token=${cMb35i1YUJFyc9rmxFXlvP9a}
 
 notifications:
   email: false
+
+
